@@ -71,12 +71,11 @@ public class Fraction {
 
         Fraction selfCloned = cloneExact();
         Fraction inputCloned = input.cloneExact();
+
         selfCloned.changeToProperFraction();
         inputCloned.changeToProperFraction();
 
-        return ((selfCloned.wholeNumber == inputCloned.wholeNumber)
-        && (selfCloned.numerator == inputCloned.numerator)
-        && selfCloned.denominator == inputCloned.denominator);
+        return selfCloned.isExactlySame(inputCloned);
 
     }
 

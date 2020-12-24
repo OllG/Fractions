@@ -38,9 +38,9 @@ public class TestMain {
     void changeToImproperFraction()
     {
         a.changeToImproperFraction();
-        assertTrue(a.getWholeNumber() == 0);
-        assertTrue(a.getNumerator() == 11);
-        assertTrue(a.getDenominator() == 4);
+        assertEquals(0, a.getWholeNumber());
+        assertEquals(11, a.getNumerator());
+        assertEquals(4, a.getDenominator());
     }
 
     @Test
@@ -49,15 +49,15 @@ public class TestMain {
         Fraction b = new Fraction(0, 11, 4);
         b.changeToProperFraction();
 
-        assertTrue(a.getWholeNumber() == 2);
-        assertTrue(a.getNumerator() == 3);
-        assertTrue(a.getDenominator() == 4);
+        assertEquals(2, b.getWholeNumber());
+        assertEquals(3, b.getNumerator());
+        assertEquals(4, b.getDenominator());
     }
 
     @Test
     void checkingEquals()
     {
-        assertTrue(a.equals(new Fraction(0, 11, 4)));
-        assertTrue(a.equals(new Fraction(1, 7, 4)));
+        assertEquals(new Fraction(1, 7, 4), a);
+        assertEquals(new Fraction(0, 11, 4), a);
     }
 }
