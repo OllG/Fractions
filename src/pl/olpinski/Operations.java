@@ -2,6 +2,23 @@ package pl.olpinski;
 
 public class Operations {
 
+    public static Fraction Addition(Fraction a, Fraction b)
+    {
+        int lcm = Operations.LeastCommonMultiple(a.denominator, b.denominator);
+
+        int aMultiplier = lcm/a.denominator;
+        int bMultiplier = lcm/b.denominator;
+
+        a.multiplyParts(aMultiplier);
+        b.multiplyParts(bMultiplier);
+
+        Fraction result = new Fraction(a.wholeNumber + b.wholeNumber, a.numerator + b.numerator, a.denominator);
+        result.changeToProperFraction();
+        result.simplify();
+
+        return result;
+    }
+
     public static int GreatestCommonDivisor(int a, int b)
     {
        int gcd = 1;

@@ -20,6 +20,9 @@ public class Fraction {
     int denominator;
 
     public Fraction(int wholeNumber, int numerator, int denominator) {
+        if(denominator == 0)
+            throw new RuntimeException("denominator cannot be 0.");
+
         this.wholeNumber = wholeNumber;
         this.numerator = numerator;
         this.denominator = denominator;
