@@ -4,6 +4,11 @@ public class Operations {
 
     public static Fraction Addition(Fraction a, Fraction b)
     {
+        if(a.wholeNumber < 0)
+            a.numerator *= -1;
+        if(b.wholeNumber < 0)
+            b.numerator *= -1;
+
         int lcm = Operations.LeastCommonMultiple(a.denominator, b.denominator);
 
         int aMultiplier = lcm/a.denominator;
@@ -15,6 +20,7 @@ public class Operations {
         Fraction result = new Fraction(a.wholeNumber + b.wholeNumber, a.numerator + b.numerator, a.denominator);
         result.changeToProperFraction();
         result.simplify();
+        result.removeMinusFromNumerator();
 
         return result;
     }

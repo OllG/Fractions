@@ -26,6 +26,8 @@ public class Fraction {
         this.wholeNumber = wholeNumber;
         this.numerator = numerator;
         this.denominator = denominator;
+
+        removeMinusFromNumerator();
     }
 
     public void changeToImproperFraction()
@@ -41,6 +43,20 @@ public class Fraction {
         int numeratorRest = numerator % denominator;
         wholeNumber += addToWholeNumber;
         numerator = numeratorRest;
+    }
+
+    public void removeMinusFromNumerator()
+    {
+        while (numerator < 0)
+        {
+            takeOneFromWhole();
+        }
+    }
+
+    private void takeOneFromWhole()
+    {
+        wholeNumber--;
+        numerator += denominator;
     }
 
     public void multiplyParts(int multiplier)
@@ -77,6 +93,10 @@ public class Fraction {
 
         selfCloned.changeToProperFraction();
         inputCloned.changeToProperFraction();
+
+        //refactor
+        if(selfCloned.numerator == 0 && inputCloned.numerator == 0)
+            selfCloned.denominator = inputCloned.denominator;
 
         return selfCloned.isExactlySame(inputCloned);
 

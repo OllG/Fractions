@@ -14,6 +14,7 @@ public class TestMain {
 
     Fraction a;
     Fraction b;
+    Fraction c;
 
     @BeforeAll
     static void initAll() {
@@ -23,6 +24,7 @@ public class TestMain {
     void init() {
         a = new Fraction(2, 3, 4);
         b= new Fraction(1, 5, 6);
+        c= new Fraction(-1, 5, 6);
     }
 
     @Test
@@ -62,6 +64,7 @@ public class TestMain {
     {
         assertEquals(new Fraction(1, 7, 4), a);
         assertEquals(new Fraction(0, 11, 4), a);
+        assertEquals(new Fraction(1, 0, 4), new Fraction(1, 0, 1));
     }
 
     @Test
@@ -80,5 +83,17 @@ public class TestMain {
     void Addition()
     {
         assertEquals(new Fraction(4, 7, 12), Operations.Addition(a, b));
+        assertEquals(new Fraction(0, 11, 12), Operations.Addition(a, c));
+        assertEquals(new Fraction(3, 1, 12), Operations.Addition(a, new Fraction(1, -2, 3)));
+        assertEquals(new Fraction(2, 7, 12), Operations.Addition(new Fraction(2, 1, 4), new Fraction(1, -2, 3)));
+        assertEquals(new Fraction(1, 0, 1), Operations.Addition(new Fraction(2, 2, 4), new Fraction(-1, 1, 2)));
+    }
+
+    @Test
+    void removeMinusFromNumerator()
+    {
+        Fraction minus = new Fraction(3, -1, 4);
+        minus.removeMinusFromNumerator();
+        assertEquals(a, minus);
     }
 }
